@@ -456,7 +456,7 @@ class LocalFilesystemAdapter implements FilesystemAdapter, ChecksumProvider
 
     public function checksum(string $path, Config $config): string
     {
-        $algo = $config->get('checksum_algo', 'md5');
+        $algo = $config->get('checksum_algo', 'sha256');
         $location = $this->prefixer->prefixPath($path);
         error_clear_last();
         $checksum = @hash_file($algo, $location);
